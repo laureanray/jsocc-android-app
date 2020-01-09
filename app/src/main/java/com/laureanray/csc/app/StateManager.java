@@ -6,7 +6,7 @@ public class StateManager {
 
     StateManager() {
         // Do things here
-        isLoggedIn = true;
+        isLoggedIn = false;
     }
 
     public boolean isLoggedIn() {

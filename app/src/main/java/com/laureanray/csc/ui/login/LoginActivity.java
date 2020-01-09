@@ -5,6 +5,7 @@ import android.app.Activity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -22,7 +23,9 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.laureanray.csc.MainActivity;
 import com.laureanray.csc.R;
+import com.laureanray.csc.app.App;
 import com.laureanray.csc.ui.login.LoginViewModel;
 import com.laureanray.csc.ui.login.LoginViewModelFactory;
 
@@ -70,7 +73,16 @@ public class LoginActivity extends AppCompatActivity {
                 }
                 if (loginResult.getSuccess() != null) {
                     updateUiWithUser(loginResult.getSuccess());
+
+                    ((App) getApplication()).getStateManager().setLoggedIn(true);
+
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(intent);
+
+
                 }
+
+
                 setResult(Activity.RESULT_OK);
 
                 //Complete and destroy login activity once successful
